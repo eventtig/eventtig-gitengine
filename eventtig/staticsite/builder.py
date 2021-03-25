@@ -46,6 +46,9 @@ class StaticSiteBuilder:
                     os.path.join(self.out_directory, filename)
                 )
 
+        # All Data
+        shutil.copy(self.datastore.get_file_name(), os.path.join(self.out_directory, "database.sqlite"))
+
 
     def _write_template(self, dirname, filename, templatename, variables):
         os.makedirs(os.path.join(self.out_directory, dirname), exist_ok=True)

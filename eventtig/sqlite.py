@@ -112,3 +112,6 @@ class DataStoreSQLite:
             event.load_from_database_row(data)
             out.append(event)
         return out
+
+    def get_file_name(self):
+        return self.out_filename
