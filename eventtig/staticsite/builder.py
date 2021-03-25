@@ -36,6 +36,12 @@ class StaticSiteBuilder:
         for event in events:
             self._write_template('event/'+event.id, 'index.html', 'event/event/index.html', {'event': event })
 
+        # Tags
+        tags = self.datastore.get_tags()
+        self._write_template('tag', 'index.html', 'tag/index.html', {'tags': tags })
+        for tag in tags:
+            self._write_template('tag/'+tag.id, 'index.html', 'tag/tag/index.html', {'tag': tag })
+
         # Assets
         assets_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'assets')
         for filename in [f for f in os.listdir(assets_dir) if os.path.isfile(os.path.join(assets_dir, f))]:

@@ -9,3 +9,8 @@ class Tag:
         self.title = data.get('title')
         self.id = id
         self.extra = data.get('extra',{})
+
+    def load_from_database_row(self, data):
+        self.title = data['title']
+        self.id = data['id']
+

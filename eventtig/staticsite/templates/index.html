@@ -13,9 +13,11 @@
 
 {% block body %}
 
-<a href="/event/"><button type="button" class="btn btn-primary">Events</button></a>
-
-<a href="/database.sqlite"><button type="button" class="btn btn-primary">Download SQLite database of all data</button></a>
+<ul>
+    <li><a href="/event/"><button type="button" class="btn btn-primary">Events</button></a></li>
+    <li><a href="/tag/"><button type="button" class="btn btn-primary">Tags</button></a></li>
+    <li><a href="/database.sqlite"><button type="button" class="btn btn-primary">Download SQLite database of all data</button></a></li>
+</ul>
 
 {% endblock %}
 

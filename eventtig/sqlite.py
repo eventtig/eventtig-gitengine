@@ -1,5 +1,7 @@
 import sqlite3
 from .event import Event
+from .tag import Tag
+
 
 class DataStoreSQLite:
 
@@ -111,6 +113,17 @@ class DataStoreSQLite:
             event = Event()
             event.load_from_database_row(data)
             out.append(event)
+        return out
+    
+    
+    def get_tags(self):
+        cur = self.connection.cursor()
+        cur.execute("SELECT * FROM tag ORDER BY title ASC", [])
+        out = []
+        for data in cur.fetchall():
+            tag = Tag()
+            tag.load_from_database_row(data)
+            out.append(tag)
         return out
 
     def get_file_name(self):
