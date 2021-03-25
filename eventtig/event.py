@@ -29,7 +29,7 @@ class Event:
         self.end_year, self.end_month, self.end_day, self.end_hour, self.end_minute = self._parse_string_to_datetime(data.get('end'))
 
     def _parse_string_to_datetime(self, value):
-        m = re.search('([0-9][0-9][0-9][0-9])-([0-9][0-9])-([0-9][0-9]) ([0-9][0-9]):([0-9][0-9])', value)
+        m = re.search('([0-9]+)-([0-9]+)-([0-9]+) ([0-9]+):([0-9]+)', value)
         year = int(m.group(1))
         month = int(m.group(2))
         day = int(m.group(3))
