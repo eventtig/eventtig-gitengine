@@ -62,6 +62,7 @@ class StaticSiteBuilder:
         # Tags
         tags = self.datastore.get_tags()
         self._write_template("tag", "index.html", "tag/index.html", {"tags": tags})
+        tag_api_json_contents = []
         for tag in tags:
             self._write_template(
                 "tag/" + tag.id,
@@ -76,6 +77,10 @@ class StaticSiteBuilder:
                 os.path.join(self.out_directory, "tag", tag.id, "tag.json"), "w"
             ) as fp:
                 json.dump({"tag": tag.get_api_json_contents()}, fp)
+            tag_api_json_contents.append(tag.get_api_json_contents())
+        with open(os.path.join(self.out_directory, "tag", "tags.json"), "w") as fp:
+            json.dump({"tags": tag_api_json_contents}, fp)
+
         # Assets
         assets_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)), "assets")
         for filename in [
