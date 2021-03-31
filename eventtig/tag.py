@@ -10,3 +10,9 @@ class Tag:
     def load_from_database_row(self, data):
         self.title = data["title"]
         self.id = data["id"]
+
+    def get_api_json_contents(self):
+        return {
+            "id": self.id,
+            "title": self.title,
+        }

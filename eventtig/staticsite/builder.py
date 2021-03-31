@@ -68,7 +68,10 @@ class StaticSiteBuilder:
                     "events": self.datastore.get_events_for_tag(tag.id),
                 },
             )
-
+            with open(
+                os.path.join(self.out_directory, "tag", tag.id, "tag.json"), "w"
+            ) as fp:
+                json.dump({"tag": tag.get_api_json_contents()}, fp)
         # Assets
         assets_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)), "assets")
         for filename in [
