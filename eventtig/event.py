@@ -127,4 +127,21 @@ class Event:
             "title": self.title,
             "description": self.description,
             "url": self.url,
+            "deleted": self.deleted,
+            "cancelled": self.cancelled,
+            "timezone": {"code": "Europe/London"},
+            "start_timezone": {
+                "year": self.start_year,
+                "month": self.start_month,
+                "day": self.start_day,
+                "hour": self.start_hour,
+                "minute": self.start_minute,
+            },
+            "end_timezone": {
+                "year": self.end_year,
+                "month": self.end_month,
+                "day": self.end_day,
+                "hour": self.end_hour,
+                "minute": self.end_minute,
+            },
         }
