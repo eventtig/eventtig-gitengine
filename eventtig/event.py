@@ -14,8 +14,8 @@ class Event:
         self.title = data["title"]
         self.description = data["description"]
         self.id = data["id"]
-        self.cancelled = data["cancelled"]
-        self.deleted = data["deleted"]
+        self.cancelled = bool(data["cancelled"])
+        self.deleted = bool(data["deleted"])
         self.url = data["url"]
         self.data = data
         self.start_year = data["start_year"]
