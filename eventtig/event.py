@@ -14,6 +14,7 @@ class Event:
         self.title = data["title"]
         self.description = data["description"]
         self.id = data["id"]
+        self.git_filename = data["git_filename"]
         self.cancelled = bool(data["cancelled"])
         self.deleted = bool(data["deleted"])
         self.url = data["url"]
@@ -29,11 +30,12 @@ class Event:
         self.end_hour = data["end_hour"]
         self.end_minute = data["end_minute"]
 
-    def load_from_yaml_data(self, id, data):
+    def load_from_yaml_data(self, id, data, git_filename):
         # Load
         self.title = data.get("title")
         self.description = data.get("description")
         self.id = id
+        self.git_filename = git_filename
         self.tag_ids = data.get("tags")
         self.cancelled = data.get("cancelled", False)
         self.deleted = data.get("deleted", False)

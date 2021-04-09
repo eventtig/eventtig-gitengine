@@ -32,7 +32,8 @@ class DataStoreSQLite:
             end_day integer,
             end_hour integer,
             end_minute integer,
-            end_epoch integer
+            end_epoch integer,
+            git_filename text
             )"""
         )
         cur.execute(
@@ -86,13 +87,14 @@ class DataStoreSQLite:
             event.end_hour,
             event.end_minute,
             event.get_end_epoch(),
+            event.git_filename,
         ]
         cur.execute(
             """INSERT INTO event (
             id, title, description, url, cancelled, deleted,
             start_year, start_month,start_day,start_hour,start_minute,start_epoch,
-            end_year,end_month,end_day,end_hour,end_minute,end_epoch
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
+            end_year,end_month,end_day,end_hour,end_minute,end_epoch,git_filename
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
             insert_data,
         )
         for tag_id in event.tag_ids:

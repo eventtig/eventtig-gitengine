@@ -19,3 +19,14 @@ class SiteConfig:
 
     def get_description(self):
         return self.config.get("description", "")
+
+    def has_github(self):
+        return (
+            self.config.get("githost", {}).get("type").strip().lowercase() == "github"
+        )
+
+    def get_github_url(self):
+        return self.config.get("githost", {}).get("url")
+
+    def get_github_default_branch(self):
+        return self.config.get("githost", {}).get("default_branch", "main")

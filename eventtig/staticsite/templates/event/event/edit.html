@@ -107,6 +107,15 @@
 
 <a href="#" onclick="copy(); return false;"><button type="button" class="btn btn-primary">Copy Data</button></a>
 
+{% if site_config.has_github %}
+    <p>Go to the Github page to edit <em>{{  event.git_filename }}</em> and copy and paste in the content above.</p>
+    <p>
+        <a href="https://github.com/{{ site_config.get_github_url() }}/edit/{{ site_config.get_github_default_branch() }}/{{  event.git_filename }}" target="_new"><button type="button" class="btn btn-primary">Edit on GitHub</button></a>
+    </p>
+{% else %}
+    <p>In the git repository, edit <em>{{  event.git_filename }}</em> and copy and paste in the content above.</p>
+{% endif %}
+
 {% endblock %}
 
 

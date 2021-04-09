@@ -58,7 +58,9 @@ class Reader:
         with open(filename_absolute) as fp:
             data = yaml.safe_load(fp)
         event = Event()
-        event.load_from_yaml_data(id, data)
+        event.load_from_yaml_data(
+            id, data, "events/" + filename_relative_to_data_folder
+        )
         self.datastore.store_event(event)
 
     def process_tag_file(self, filename_absolute, filename_relative_to_data_folder):
